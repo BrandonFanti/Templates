@@ -1,0 +1,10 @@
+[tool.poetry]
+name = "mamba_meta"
+version = "0.0.0"
+authors=["Brandon Fanti: B14CKM4MB4",]
+description="The MAMBA_SUPER_META package is a bunch of generically useful python stuff-"
+
+packages = [
+    { include = "debug", from="debug", to="mamba"},
+    { include = "mamba_logging", from="logging", to="mamba"},
+]
