@@ -1,0 +1,3 @@
+[submodule "Python/MAMBA_SUPER_META/logging/lazy_logger"]
+	path = Python/MAMBA_SUPER_META/logging/lazy_logger
+	url = https://github.com/BrandonFanti/lazy_logger
