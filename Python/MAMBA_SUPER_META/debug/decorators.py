@@ -15,7 +15,10 @@ class Protector:
     magic=False
 
     def __init__(self, your_main):
-        return self.get_protector(your_main)
+        self.user_main = self.get_protector(your_main)
+
+    def __call__(self):
+        self.user_main()
 
     @staticmethod
     def get_protector(func):
