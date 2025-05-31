@@ -13,7 +13,7 @@ class ColoredMambaFrame(MambaFrame):
         self.factory_colorize()
 
     @staticmethod
-    def factory_colorize(frame:MambaFrame):
+    def factory_colorize(frame:MambaFrame, magic=True):
         attr_to_color_info = [
             'line_prefixed__pre_faulting_lines',
             'line_prefixed__post_faulting_lines',
@@ -41,16 +41,16 @@ class ColoredMambaFrame(MambaFrame):
         apply_color(attr_to_color_info, 'BLUE')
         apply_color(attr_to_color_fail, 'RED')
         apply_color(attr_to_color_magic,'PURPLE')
-        apply_effect(attr_to_color_magic)
+        if magic: apply_effect(attr_to_color_magic)
 
         return frame
 
 class ColoredMambaTrace(MambaTrace):
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, magic=True, **kwargs):
         super().__init__(*args, **kwargs)
         self.frame_list =\
-            [ColoredMambaFrame.factory_colorize(f) for f in self.frame_list]
+            [ColoredMambaFrame.factory_colorize(f, magic=magic) for f in self.frame_list]
         self.multiframe_prefix_str =\
             logger.format_color(self.multiframe_prefix_str, 'blue')
         self.exception =\
