@@ -1,5 +1,4 @@
 from mamba_meta.debug.decorators import Protector
-Protector.pdb_enable = True
 Protector.magic = False
 
 def promptly_exlode(my_logger):

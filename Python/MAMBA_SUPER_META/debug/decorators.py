@@ -1,5 +1,5 @@
 from os import environ
-vscode_env_vars = ['__vsc_stable', '__vsc_initialized', '__vsc_status']
+vscode_env_vars = ['DEBUGPY_RUNNING']
 is_vscode = all([k in environ.keys() for k in vscode_env_vars])
 from functools import wraps
 import pdb
@@ -37,7 +37,8 @@ class Protector:
                         magic=Protector.magic
                     )
                 )
-                if Protector.pdb_enable: pdb.post_mortem(t=e.__traceback__)
+                if Protector.pdb_enable and not Protector.vscode_enable:
+                    pdb.post_mortem(t=e.__traceback__)
 
             if not Protector.vscode_enable:
                 protector_logger.info(f"Exiting... {color.RESET}")
