@@ -1,5 +1,4 @@
 from mamba_meta.debug.decorators import Protector
-Protector.magic = False
 
 def promptly_explode(my_logger):
     my_logger.colorize("Wanna see me explode?", color='red')
