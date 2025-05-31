@@ -6,7 +6,7 @@
         {
             "label": "Launch",
             "type": "shell",
-            "command": ".venv/bin/python",
+            "command": "venv/bin/python",
             "args": [],
             "problemMatcher": []
         }

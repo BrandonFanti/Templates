@@ -14,8 +14,7 @@ print(f"cwd:{os.getcwd()}")
 print(f"mamba path: {mamba_path}")
 sys.path.append(mamba_path)
 
-from MAMBA_SUPER_META.path_hack.add_cwd_namespace import *
-from MAMBA_SUPER_META.debug.traceback_with_args import frame_inspector,alt_frame_inspector
+from MAMBA_SUPER_META.debug import MambaTrace
 
 from path_hack_test import i_should_exist
 
@@ -23,8 +22,11 @@ def foo(x):
     print(x)
 
 def bar(x):
-    foo(x)
-    raise Exception("Oh no!")
+    if isinstance(x,str):
+        raise ValueError(f"Oh no! Something is wrong with x!: \"{x}\"")
+        foo(x)
+    else:
+        foo(x)
 
 def baz(x):
     bar(x)
@@ -32,15 +34,10 @@ def baz(x):
 
 try:
     print(f"Should I exist? ... {i_should_exist}")
-    bar("~laa~laa~laa")
+    baz(len("~laa~laa~laa"))
+    baz("~laa~laa~laa")
 except Exception as e:
     e_type, e_instance, exc_info = sys.exc_info()
-    traceback.print_exc()
+    # traceback.print_exc()
     print("~~~~~~~~~~~~~~~~~~mamba-debug-begin~~~~~~~~~~~~~~~~~~")
-    frames = alt_frame_inspector()
-    print(f"Traceback (most recent call last):")
-    if frames and len(frames) >= 1:
-        for index, frame in enumerate(frames):
-            print(frame, end='')
-    else:
-        print(f"Exception without frames({len(frames)})? {e.__class__}")
+    print(MambaTrace(e, line_prefix=True, vars_helper=True, preview_line_count=6))

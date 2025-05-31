@@ -1,0 +1,47 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Poetry| Clean",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}",
+                "env": {
+                    "TASK_POETRY_CLEANUP_LIST": "poetry.lock"
+                }
+            },
+            "command": "printf \"%s\" $TASK_POETRY_CLEANUP_LIST | sed 's/\\./\\\\\\\\\\./g' | xargs -d';' printf \".*/%s$\\\\n\" $@ | xargs -r -n1 find -iregex $@ | xargs rm $@",
+            "problemMatcher": []
+        },
+        {
+            "label": "Poetry| Update",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "command": "poetry install; poetry bundle venv ${workspaceFolder}/venv",
+            "problemMatcher": []
+        },
+        {
+            "label": "Launch",
+            "type": "shell",
+            "command": "venv/bin/python",
+            "args": [],
+            "problemMatcher": []
+        },
+        {
+            "label": "Launch Debug",
+            "type": "shell",
+            "command": "venv/bin/python",
+            "args": [
+                "FOWL.py --debug --crash-on-handler --crash-on-handler-exception"
+            ],
+            "problemMatcher": [],
+            "group": {
+                "isDefault": true
+            }
+        }
+    ]
+}
