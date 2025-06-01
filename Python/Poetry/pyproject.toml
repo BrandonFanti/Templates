@@ -3,6 +3,10 @@ name = "META"
 version = "0.0.0"
 authors=["Brandon Fanti: B14CKM4MB4"]
 description="The META package is too generic and meta for description."
+
 packages = [
     { include = "something", from="src/something" , to="META"},
 ]
+
+[tool.poetry.dependencies]
+ python = "^3.10"

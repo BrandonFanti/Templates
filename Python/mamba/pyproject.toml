@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "mamba"
+version = "0.0.0"
+authors=["Brandon Fanti: B14CKM4MB4",]
+description="The mamba package for rapid prototyping"
+
+packages = [
+    { include = "template", from=".", to="mamba"},
+    { include = "parsers",  from=".", to="mamba"},
+    { include = "gui",      from=".", to="mamba"},
+]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+PyQt6 = "6.9.0"
