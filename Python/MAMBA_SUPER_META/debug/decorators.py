@@ -14,20 +14,29 @@ class Protector:
     vscode_enable = is_vscode
     magic=False
 
-    def __init__(self, your_main):
-        self.user_main = self.get_protector(your_main)
+    def __init__(self, your_main, **kwargs):
+        self.user_main = self.get_protector(your_main, **kwargs)
 
-    def __call__(self):
-        self.user_main()
+    def __call__(self, *args, **kwargs):
+        self.user_main(*args, **kwargs)
 
     @staticmethod
-    def get_protector(func):
+    def get_protector(func, suffix='', **kwargs):
+        if 'logger' in kwargs.keys():
+            protector_logger = kwargs.pop('logger')
+        else:
+            if suffix: suffix='_'+suffix
+            protector_logger = logger(name='mamba_shield'+suffix)
+        del kwargs
+
         @wraps(func)
         def trace_util(*args, **kwargs):
+            protector_logger.debug(f"({args},{kwargs})")
             _exception = None
-            protector_logger = logger(name='mamba_shield')
             try:
-                return func(*args, logger=protector_logger, **kwargs)
+                protector_logger.info("Starting...")
+                logger = kwargs.pop('logger', protector_logger)
+                return func(*args, logger=logger, **kwargs)
             except Exception as e:
                 _exception = e
                 protector_logger.print(

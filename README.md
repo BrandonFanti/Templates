@@ -17,16 +17,15 @@ Currently installable via clone, and with an externally activated poetry install
     - description: 100% native python (no external dependencies)
     - util ([e.g.](https://github.com/BrandonFanti/Templates/blob/861d719f7aeb7a41a4edba269ee6c90fbc0e171b/Python/MAMBA_SUPER_META/general/filters.py#L1C5-L1C16))
     - debug
+      - notably, [Protector](https://github.com/BrandonFanti/Templates/blob/5ca6ea07e50e49093cff55e4bfa68581444271c7/Python/MAMBA_SUPER_META/debug/decorators.py#L12) decorator, as demonstrated above
     - logging
     - thread
-    - despite the name, this will be general multiprocessing+threading utilities 
-      - The aim is fast templates OK! Semantics...
+      - description despite the name, this will be general multiprocessing+threading utilities 
+        - The aim is fast templates OK! Semantics...
   - interwebnet
     - an abstraction API into mamba.web+mamba.net
   - web
-      - django 
-      - planning better [channel integration](https://channels.readthedocs.io/en/latest/#django-channels)
+      - description: django driven, planning better [channel integration](https://channels.readthedocs.io/en/latest/#django-channels)
   - net
-      - [scapy](https://scapy.readthedocs.io/en/latest/introduction.html)
-      - planning better class/building heirarchy
+      - description: [scapy](https://scapy.readthedocs.io/en/latest/introduction.html) driven,planning better class/building heirarchy
   
