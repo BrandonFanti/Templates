@@ -27,5 +27,5 @@ Currently installable via clone, and with an externally activated poetry install
   - web
       - description: django driven, planning better [channel integration](https://channels.readthedocs.io/en/latest/#django-channels)
   - net
-      - description: [scapy](https://scapy.readthedocs.io/en/latest/introduction.html) driven,planning better class/building heirarchy
+      - description: [scapy](https://scapy.readthedocs.io/en/latest/introduction.html) driven, planning better class/building heirarchy
   
