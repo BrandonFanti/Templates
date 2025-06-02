@@ -2,7 +2,7 @@ from ...create import *
 from .. import src
 import os
 
-print("Running create.generic.package")
+print("Running create.mamba.package")
 copy_file_or_folder(
     os.path.sep.join([
         src,

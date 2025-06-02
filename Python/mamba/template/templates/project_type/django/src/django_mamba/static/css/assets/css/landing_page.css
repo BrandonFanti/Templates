@@ -1,0 +1,8 @@
+.fit-cover {
+  object-fit: cover;
+}
+
+#nav_banner_header {
+  border-color: rgb(66,96,125);
+  margin: 15px;
+}

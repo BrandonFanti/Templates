@@ -22,6 +22,11 @@ Currently installable via clone, and with an externally activated poetry install
     - thread
       - description despite the name, this will be general multiprocessing+threading utilities 
         - The aim is fast templates OK! Semantics...
+  - template
+    - description: a system for instantiating templates
+      - e.g.: 
+        - `python -m mamba.template.generic.project new_project` creates a new project with the name "new_project", as one would find in (Python/_Templates/_project_structure)[Python/_Templates/_project_structure/]
+        - likewise for `mamba.template.generic.package` to the project structure's package/template_package and `mamba.template.generic.module`
   - interwebnet
     - an abstraction API into mamba.web+mamba.net
   - web

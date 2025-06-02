@@ -1,0 +1,2 @@
+.env
+src/django_mamba/db.sqlite3

@@ -1,0 +1,41 @@
+.page-container {
+    background-color: var(--bs-secondary-bg-subtle);
+    max-width: 100%;
+    max-height: 100%;
+    min-width: 95%;
+    min-height: 95%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.prompt-container{
+    background-color: var(--bs-dark-bg-subtle);
+    width: fit-content;
+    block-size: fit-content;
+    max-width: 60%;
+    max-height: 60%;
+    min-width: 40%;
+    min-height: 40%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.sign_in_prompt {
+    padding-bottom: 10px;
+}
+
+.submit {
+    transform: translate(20%,0%);
+}
+
+#form_div {
+    top: 50%;
+    left: 50%;
+    transform: translate(25%,25%);
+    font: unset;
+    font-size: unset;
+}

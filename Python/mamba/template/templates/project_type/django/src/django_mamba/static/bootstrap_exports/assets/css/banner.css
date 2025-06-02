@@ -1,0 +1,21 @@
+.fit-cover {
+  object-fit: cover;
+}
+
+.navbar {
+  border-color: rgb(66,96,125);
+  margin-top: 30px;
+}
+
+div {
+}
+
+@media (min-width: 1200px) {
+  #nav_banner_header {
+  }
+}
+
+#nav_banner_header {
+  margin: 15px;
+}
+
