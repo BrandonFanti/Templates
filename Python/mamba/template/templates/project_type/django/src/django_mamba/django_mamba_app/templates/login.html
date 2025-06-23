@@ -16,19 +16,35 @@
             <div class="prompt-container" style="max-height:80%; max-width:60%; max-width:40%; border-radius:25px">
                 <center><span style="margin-top: 60px">Enter your credentials</span></center>
                 <div id="form_div" style="margin-bottom: 20px">
-                    <form id="prompts" >
+                    <form id="login_form" method="post" action="login" >
                         <div class="sign_in_prompt">
-                            <input id="email" type="email" placeholder="user@mamba.net">
+                            <input id="user" name="user" type="text" placeholder="user@mamba.net">
                         </div>
                         <div class="sign_in_prompt">
-                            <input id="password" type="password" placeholder="password">
+                            <input id="password" name="password" type="password" placeholder="password">
                         </div>
                         <div class="sign_in_prompt submit">
                             <input type="submit" value="GO">
                         </div>
+                        {% csrf_token %}
                     </form>
                 </div>
             </div>
         </div>
     </div>
 <body>
+
+<script>
+$("#login_form").on('submit',(e)=>{
+    $.ajax({
+        url: 'login',
+        type: 'post',
+        dataType: 'application/json',
+        data: $("#login_form").serialize(),
+        success: function(result){
+            console.log(result)
+        }
+    });
+});
+</script>
+
