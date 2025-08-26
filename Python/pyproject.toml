@@ -8,12 +8,16 @@ packages = [
     { include = "template",  from="mamba", to="mamba"},
     { include = "parsers",   from="mamba", to="mamba"},
     { include = "gui",       from="mamba", to="mamba"},
-    { include = "general",   from="MAMBA_SUPER_META", to="mamba_meta"},
-    { include = "path_hack", from="MAMBA_SUPER_META", to="mamba_meta"},
-    { include = "debug",     from="MAMBA_SUPER_META", to="mamba_meta"},
-    { include = "logging",   from="MAMBA_SUPER_META", to="mamba_meta"},
+    { include = "general",   from="MAMBA_SUPER_META", to="mamba.meta"},
+    { include = "path_hack", from="MAMBA_SUPER_META", to="mamba.meta"},
+    { include = "debug",     from="MAMBA_SUPER_META", to="mamba.meta"},
+    { include = "logging",   from="MAMBA_SUPER_META", to="mamba.meta"},
 ]
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = ">3.10,<3.14"
 PyQt6 = "6.9.0"
+PySide6 = "6.9.0"
+pyqtgraph = "0.13.7"
+Django = "5.2.1"
+dotenv = "0.9.9"
