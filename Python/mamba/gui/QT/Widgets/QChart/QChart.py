@@ -2,8 +2,8 @@ from __future__ import annotations
 
 import pyqtgraph as pg
 
-from PyQt6 import QtCore, QtGui, QtWidgets
-from PyQt6.QtWidgets import (
+from PySide6 import QtCore, QtGui, QtWidgets
+from PySide6.QtWidgets import (
     QBoxLayout
 )
 

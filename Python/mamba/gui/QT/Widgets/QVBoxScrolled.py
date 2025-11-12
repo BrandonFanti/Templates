@@ -1,5 +1,5 @@
 
-from PyQt6.QtWidgets import (
+from PySide6.QtWidgets import (
     QApplication,
     QMainWindow,
     QWidget,
@@ -7,7 +7,7 @@ from PyQt6.QtWidgets import (
     QGridLayout,
     QVBoxLayout,
 )
-from PyQt6.QtCore import QSize,Qt
+from PySide6.QtCore import QSize,Qt
 
 from .QChartScrolled import QChartXY
 import pyqtgraph as pg
@@ -63,3 +63,5 @@ class QVBoxScrolled(QWidget):
         print(__class__.get_version_info())
         print(f"You can initialize it like this: ")
         print(repr(__class__()))
+
+

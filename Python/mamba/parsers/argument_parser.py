@@ -3,16 +3,10 @@ from os import environ as env
 
 from mamba_meta.logging import logger
 
-class Argument:
-    def __init__(self, *args, **kwargs):
-        kws = kwargs.keys()
-        assert 'name' in kws
-        assert 'type' in kws
-        assert 'value' in kws
-        for key in kwargs:
-            setattr(self, key, kwargs[key])
-
 class MambaParser(ArgumentParser):
+    defaults={
+        "debugging":False
+    }
 
     def __init__(self, *k, **kw):
         super().__init__(
@@ -21,6 +15,7 @@ class MambaParser(ArgumentParser):
             epilog=""" ~ A tool created by Brandon Fanti ~""",
             formatter_class=RawTextHelpFormatter
         )
+        self.logger = logger.getLogger()
 
         #initialize defaults
         self._set_defaults()
