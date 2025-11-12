@@ -14,6 +14,10 @@ packages = [
     { include = "logging",   from="MAMBA_SUPER_META", to="mamba_meta"},
 ]
 
+include = [
+    { path = "template/", format = ["sdist", "wheel"] }
+]
+
 [tool.poetry.dependencies]
 python = ">3.10,<3.14"
 PySide6 = "6.9.0"
