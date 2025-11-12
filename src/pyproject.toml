@@ -15,7 +15,7 @@ packages = [
 ]
 
 include = [
-    { path = "template/", format = ["sdist", "wheel"] }
+    { path = "mamba/template/", format = ["sdist", "wheel"] }
 ]
 
 [tool.poetry.dependencies]
