@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "mamba"
+version = "0.0.0"
+authors=["Brandon Fanti: B14CKM4MB4",]
+description="The mamba package for rapid prototyping"
+
+packages = [
+    { include = "template",  from="Python/mamba", to="mamba"},
+    { include = "parsers",   from="Python/mamba", to="mamba"},
+    { include = "gui",       from="Python/mamba", to="mamba"},
+    { include = "general",   from="Python/MAMBA_SUPER_META", to="mamba_meta"},
+    { include = "path_hack", from="Python/MAMBA_SUPER_META", to="mamba_meta"},
+    { include = "debug",     from="Python/MAMBA_SUPER_META", to="mamba_meta"},
+    { include = "logging",   from="Python/MAMBA_SUPER_META", to="mamba_meta"},
+]
+
+[tool.poetry.dependencies]
+python = ">3.10,<3.14"
+PySide6 = "6.9.0"
+pyqtgraph = "0.13.7"
+Django = "5.2.1"
+dotenv = "0.9.9"
+pydantic = "^2.12.4"
