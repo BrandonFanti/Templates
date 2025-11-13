@@ -1,4 +1,5 @@
-# Project Title
+content="""
+# {}
 
 ## Description
 
@@ -30,3 +31,19 @@ List the authors of the project and their GitHub usernames if applicable.
 
 * 0.0.0
     * Initial Release
+"""
+
+import os 
+makedirs = os.makedirs
+sep = os.path.sep
+
+def export_readme(destination, name="Project Title"):
+    try:
+        os.path.makedirs(destination)
+    except:
+        pass
+
+    with open(destination+sep+"README.md", 'w') as fout:
+        fout.write(
+            content.format(name)
+        )

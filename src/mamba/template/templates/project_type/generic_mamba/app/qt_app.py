@@ -16,8 +16,9 @@ def open():
     dialog.getOpenFileName()
 
 if __name__ == '__main__':
+    from os.path import sep
     app = QApplication([])
-    window = QUiLoader().load('window.ui')
+    window = QUiLoader().load(f'UI{sep}window.ui')
     sb = QVBoxScrolled()
     window.menu_layout_1.addWidget(sb)
     window.actionOpen.triggered.connect(open)

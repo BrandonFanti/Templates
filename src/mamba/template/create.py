@@ -4,6 +4,7 @@ import os
 import sys
 
 destination_name = sys.argv[-1]
+destination = os.path.join(os.getcwd(), destination_name)
 
 def copy_file_or_folder(source, suffix_dest=''):
     print(f"Copying {source}...")

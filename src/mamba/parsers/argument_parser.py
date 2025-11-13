@@ -2,6 +2,7 @@ from argparse import RawTextHelpFormatter, Action, ArgumentParser, BooleanOption
 from os import environ as env
 
 from mamba_meta.logging import logger
+import logging
 
 class MambaParser(ArgumentParser):
     defaults={
@@ -13,10 +14,11 @@ class MambaParser(ArgumentParser):
             prog=f"{__class__.__name__}",
             description="Generic template",
             epilog=""" ~ A tool created by Brandon Fanti ~""",
-            formatter_class=RawTextHelpFormatter
+            formatter_class=RawTextHelpFormatter,
         )
         self.logger = logger.getLogger()
 
+    def parse_args(self):
         #initialize defaults
         self._set_defaults()
         self._add_default_arguments()
@@ -28,13 +30,13 @@ class MambaParser(ArgumentParser):
         self.action_defaults = None
 
     def _set_defaults(self):
-        defaults = __class__.defaults
+        defaults = {**__class__.defaults, **self.defaults}
         for key in defaults.keys():
             self.logger.debug(f"Setting self.{key} = {defaults[key]}")
             setattr(self, key, defaults[key])
 
     def _warn_overloading_non_default_and_configured(self, new_options, option_source="?"):
-        defaults = __class__.defaults
+        defaults = {**__class__.defaults, **self.defaults}
         to_be_overridden = []
         #Iterate current options and CLI arguments
         for key in new_options.keys():
@@ -64,8 +66,9 @@ class MambaParser(ArgumentParser):
 
     #Env, take 3
     def environ_parse(self):
+        defaults = {**__class__.defaults, **self.defaults}
         new_options = {}
-        for key in __class__.defaults.keys():
+        for key in defaults.keys():
             if key in env: 
                 new_options[key] = env[key]
 
@@ -73,12 +76,13 @@ class MambaParser(ArgumentParser):
 
     def cli_parse(self):
         new_options = {}
-        args = self.parse_args()
+        args = super().parse_args()
         self.logger.debug(args)
+        defaults = {**__class__.defaults, **self.defaults}
         #Iterate options 
         for key in vars(args).keys():
             self.logger.debug(f"cli_parse(): Checking {key}")
-            if not hasattr(self, key) and getattr(args, key) != __class__.defaults[key]:
+            if not hasattr(self, key) and getattr(args, key) != defaults[key]:
                 self.logger.debug(f"Changing {key} to  {getattr(args, key)}")
                 new_options[key] = getattr(args, key)
             else:
@@ -90,7 +94,7 @@ class MambaParser(ArgumentParser):
     def _add_default_arguments(self):
         if hasattr(self, 'action_defaults'):
             self.logger.debug("Resetting argparser Action defaults")
-        defaults = __class__.defaults
+        defaults = {**__class__.defaults, **self.defaults}
         actions = []
 
         actions.append(
